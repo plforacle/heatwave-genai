@@ -40,7 +40,16 @@
         },
 
         {
-          "title": "Lab 6: Build HeatWave RAG Chat Application",
+          "title": "Lab 6: NEW-1: Perform Retrieval Augmented Generation",
+          "filename": "../../vectore-search-par/vectore-search-par.md"
+        },        
+
+                {
+          "title": "Lab 7: NEW-2: Perform Retrieval Augmented Generation",
+          "filename": "../../vector-search-updated/vector-search-updated.md"
+        },  
+        {
+          "title": "Lab 8: Build HeatWave RAG Chat Application",
           "filename": "../../develop-app/develop-app.md"
         },
 
