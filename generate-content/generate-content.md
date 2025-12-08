@@ -15,7 +15,7 @@ In this lab, you will be guided through the following task:
 
 ### Prerequisites
 
-- Must complete Lab 3.
+- Must complete Lab **Connect to the HeatWave Instance from Visual Studio Code**.
 
 
 ## Task 1:  Generate response using in-database LLMs
@@ -96,5 +96,5 @@ You may now **proceed to the next lab**.
 
 - **Author** - Aijaz Fatima, Product Manager
 - **Contributors** - Mandy Pang, Senior Principal Product Manager, Aijaz Fatima, Product Manager
-- **Last Updated By/Date** - Aijaz Fatima, Product Manager, August 2024
+- ***Last Updated By/Date** - Perside Lafrance Foster, Open Source Principal Partner Solution Engineer, December 2025
 

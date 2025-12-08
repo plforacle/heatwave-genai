@@ -19,7 +19,7 @@ In this lab, you will be guided through the following tasks:
 
 ### Prerequisites
 
-- Completed Lab 5.
+- Completed Lab **Perform Retrieval Augmented Generation**.
 
 ### About the HeatWave RAG Chat Application
 
@@ -420,4 +420,4 @@ You may now **proceed to the next lab**.
 
 - **Author** - Aijaz Fatima, Product Manager 
 - **Contributors** - Perside Foster, MySQL Principal Solution Engineer
-- **Last Updated By/Date** - Aijaz Fatima, Product Manager, September 2024
+- ***Last Updated By/Date** - Perside Lafrance Foster, Open Source Principal Partner Solution Engineer, December 2025

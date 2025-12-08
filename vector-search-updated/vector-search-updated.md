@@ -19,7 +19,7 @@ In this lab, you will be guided through the following tasks:
 
 ### Prerequisites
 
-- Must complete Lab 4.
+- Must complete Lab **Use HeatWave in-database LLM**...
 
 ## Task 1: Download HeatWave files
 
@@ -364,4 +364,4 @@ Now that your RAG system is working, try these additional queries to explore you
 
 - **Author** - Aijaz Fatima, Product Manager
 - **Contributors** - Mandy Pang, Senior Principal Product Manager, Aijaz Fatima, Product Manager
-- **Last Updated By/Date** - Updated for PAR usage, December 2024
+- ***Last Updated By/Date** - Perside Lafrance Foster, Open Source Principal Partner Solution Engineer, December 2025

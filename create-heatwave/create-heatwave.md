@@ -252,4 +252,4 @@ You may now **proceed to the next lab**.
 
 - **Author** - Aijaz Fatima, Product Manager
 - **Contributors** - Mandy Pang, Senior Principal Product Manager
-- **Last Updated By/Date** - Aijaz Fatima, Product Manager, August 2024
+- ***Last Updated By/Date** - Perside Lafrance Foster, Open Source Principal Partner Solution Engineer, December 2025
