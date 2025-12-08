@@ -8,14 +8,14 @@ _Estimated Time:_ 30 minutes
 
 ### Objectives
 
-In this lab, you will be guided through the following task:
+In this lab, you will be guided through the following tasks:
 
 - Download HeatWave files.
 - Create a bucket and a folder.
 - Upload files to the bucket folder.
 - Create a Pre-Authenticated Request (PAR) for secure access.
 - Set up a vector store.
-- Perform a vector search.
+- Perform retrieval augmented generation (RAG) queries.
 
 ### Prerequisites
 
@@ -159,19 +159,16 @@ Pre-authenticated requests provide a way to let HeatWave access your bucket or o
 
     ![Create database](./images/11-create-database.png "Create database")
 
-2. Call the following procedure to create a schema that is used for task management.
+3. **Important: Verify Your Files Are in the Correct Location**
 
-    ```bash
-    <copy>select mysql_task_management_ensure_schema();</copy>
-    ```
+    Before proceeding, ensure your 4 PDF files are inside the `bucket-folder-heatwave/` folder in Object Storage, not at the bucket root level. The `VECTOR_STORE_LOAD` procedure will process ALL files it finds at the specified path.
+    
+    - Go to OCI Console → Storage → Buckets → bucket-vector-search-3
+    - Click on `bucket-folder-heatwave/` folder
+    - Verify all 4 PDF files are inside this folder
+    - If files are at the root level, move them into the folder before proceeding
 
-    ![Call procedure](./images/12-call-procedure.png "Call procedure")
-
-3. Click **Reload Database Information** to view the mysql\_task\_management schema.
-
-    ![Reload Database Information](./images/13-reload-database-information.png "Reload Database Information")
-
-4. Ingest the file from the Object Storage using the Pre-Authenticated Request URL, create vector embeddings, and load the vector embeddings into HeatWave:
+4. Ingest the files from Object Storage using the Pre-Authenticated Request URL, create vector embeddings, and load the vector embeddings into HeatWave:
 
     ```bash
     <copy>call sys.VECTOR_STORE_LOAD('<PAR-URL>', '{"table_name": "VectorStoreTableName"}');</copy>
@@ -194,9 +191,39 @@ Pre-authenticated requests provide a way to let HeatWave access your bucket or o
 
     ![Ingest files from Object Storage](./images/14-ingest-files.png "Ingest files from Object Storage")
 
-    **Note**: The PAR URL provides secure, time-limited access to your Object Storage bucket without requiring dynamic groups or IAM policies.
+    **Note**: The command returns a `task_id` and a `task_status_query`. Copy the `task_id` for checking the status in the next step.
 
-5. Wait for a few minutes, and verify that embeddings are loaded in the vector embeddings table.
+5. Check the task status using the `task_id` returned in the previous step:
+
+    ```bash
+    <copy>SELECT mysql_tasks.task_status_brief("<your-task-id>");</copy>
+    ```
+    
+    For example:
+    ```bash
+    <copy>SELECT mysql_tasks.task_status_brief("9ff44dad-d3ca-11f0-ad82-020017142e41");</copy>
+    ```
+    
+    The status will show:
+    - **RUNNING**: Task is in progress (check every 30-60 seconds)
+    - **COMPLETED**: Task finished successfully
+    - **ERROR**: Task failed (check error message for details)
+    
+    Example output during processing:
+    ```json
+    {
+      "data": {"tables_to_load": "[{\"table_name\": \"livelab_embedding_pdf\", \"load_progress\": 100.0}]"},
+      "status": "RUNNING",
+      "message": "Loading in progress...",
+      "progress": 60
+    }
+    ```
+    
+    Wait until the status shows `"status": "COMPLETED"` and `"progress": 100` before proceeding.
+    
+    **Note**: Vector embedding generation takes approximately 3-7 minutes depending on file size and HeatWave cluster configuration.
+
+6. Once the task shows COMPLETED status, verify that embeddings are loaded in the vector embeddings table.
 
     ```bash
     <copy>select count(*) from <EmbeddingsTableName>;</copy>
@@ -205,9 +232,28 @@ Pre-authenticated requests provide a way to let HeatWave access your bucket or o
     ```bash
     <copy>select count(*) from livelab_embedding_pdf; </copy>
     ```
-    It takes a couple of minutes to create vector embeddings. You should see a numerical value in the output, which means your embeddings are successfully loaded in the table.
+    It takes a couple of minutes to create vector embeddings. You should see a numerical value in the output (e.g., 592), which means your embeddings are successfully loaded in the table.
 
     ![Vector embeddings](./images/15-check-count.png "Vector embeddings")
+
+### Troubleshooting Common Issues
+
+**Error: "No valid data found for processing"**
+
+This error means HeatWave cannot find files at the specified PAR URL location. Check:
+
+1. **Files are in the correct location**: Verify PDFs are inside `bucket-folder-heatwave/` folder, not at bucket root
+2. **PAR URL includes folder path**: Ensure your URL ends with `/bucket-folder-heatwave/`
+3. **PAR has Object Listing enabled**: This is required for HeatWave to discover files
+4. **PAR has not expired**: Check expiration date and create new PAR if needed
+
+**Error: "Table is not loaded in HeatWave"**
+
+This means the task is still processing. Wait for the task status to show "COMPLETED" before querying the table.
+
+**Empty tables (0 count)**
+
+If only `livelab_embedding_pdf` has data and other tables (\_doc, \_html, \_ppt, \_txt) show 0 rows, this is normal - you only uploaded PDF files. HeatWave creates table structures for all supported file types but only populates tables that have corresponding files.
 
 ## Task 6: Perform retrieval augmented generation
 
@@ -246,6 +292,8 @@ HeatWave retrieves content from the vector store and provide that as context to 
     ```
 
     ![Set options](./images/17-set-options.png "Set options")
+    
+    **Important**: The first RAG query will take 2-5 minutes as HeatWave loads the Large Language Model (LLM) into memory. Subsequent queries will be much faster (10-30 seconds).
 
 4. Print the output:
 
@@ -260,6 +308,38 @@ HeatWave retrieves content from the vector store and provide that as context to 
     - The citations section shows the segments and documents it referred to as context.
 
     ![Vector search results](./images/18-vector-search-output.png "Vector search results")
+
+## Additional Example Queries
+
+Now that your RAG system is working, try these additional queries to explore your HeatWave documentation:
+
+```bash
+-- Query about Lakehouse capabilities
+<copy>set @query="What file formats does HeatWave Lakehouse support?";</copy>
+<copy>call sys.ML_RAG(@query,@output,@options);</copy>
+<copy>select JSON_PRETTY(@output);</copy>
+```
+
+```bash
+-- Query about AWS deployment
+<copy>set @query="What are the benefits of running HeatWave on AWS?";</copy>
+<copy>call sys.ML_RAG(@query,@output,@options);</copy>
+<copy>select JSON_PRETTY(@output);</copy>
+```
+
+```bash
+-- Query about ML capabilities
+<copy>set @query="What types of machine learning models can I build with HeatWave AutoML?";</copy>
+<copy>call sys.ML_RAG(@query,@output,@options);</copy>
+<copy>select JSON_PRETTY(@output);</copy>
+```
+
+```bash
+-- Query about performance
+<copy>set @query="How does HeatWave performance compare to other databases?";</copy>
+<copy>call sys.ML_RAG(@query,@output,@options);</copy>
+<copy>select JSON_PRETTY(@output);</copy>
+```
 
 ## Important Notes on Pre-Authenticated Requests
 
