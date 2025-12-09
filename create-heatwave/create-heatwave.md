@@ -194,14 +194,13 @@ In this lab, you will be guided through the following tasks:
 
 7. Let the **Configure placement** settings remain as is.
 
-8. Under **Configure hardware**, select **Enable HeatWave cluster**, and click **Change shape**.
+8. **HeatWave Configuration**
 
-    **HeatWave Configure hardware**
     - DB System Shape: MySQL.32
-    - HeatWave Cluster: HeatWave.512
+    - HeatWave Cluster: HeatWave.512GB
     - Database version: 9.5.1-Innovation  or higher version.
 
-
+    Under **Configure hardware**, select **Enable HeatWave cluster**, and click **Change shape**.
 
    ![Change shape](./images/24-change-shape.png "Change shape")
 
