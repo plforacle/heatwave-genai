@@ -25,7 +25,7 @@ In this lab, you will be guided through the following task:
     - To load mistral-7b-instruct-v1 model:
 
         ```bash
-        <copy>call sys.ML_MODEL_LOAD('mistral-7b-instruct-v1', NULL);</copy>
+        <copy>call sys.ML_MODEL_LOAD('mistral-7b-instruct-v3', NULL);</copy>
         ```
 
         ![Load LLMs](./images/1-load-llm.png "Load LLMs")
