@@ -319,6 +319,11 @@ _Estimated Time:_ 20 minutes
     ```bash
     <copy>cd /var/www/html</copy>
     ```
+<!--
+The application source files are in this workshop developHEATWAVE-GENAI/delop-app/files folder
+The PAR bucket is at Tenancy mysqlpm  compartment mysqlpm/livelabs/mysql_gen_ai/php-rag-chat-app/app.zip
+Contact perside.foster@oracle.com for more details
+-->
 
 2. Download the application code.
 
