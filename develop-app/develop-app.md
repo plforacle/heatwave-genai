@@ -129,10 +129,10 @@ _Estimated Time:_ 20 minutes
 
 ## Task 3: Install PHP
 
-1. Using Visual Studio Code, install PHP 7.4.
+1. Using Visual Studio Code, install PHP 8.2.
 
     ```bash
-    <copy> sudo dnf module install php:7.4 -y</copy>
+    <copy> sudo dnf install @php:8.2 -y</copy>
     ```
 
     ![Install PHP](./images/install-php.png "Install PHP")
