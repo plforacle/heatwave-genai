@@ -178,12 +178,12 @@ Pre-authenticated requests provide a way to let HeatWave access your bucket or o
 4. Ingest the files from Object Storage using the Pre-Authenticated Request URL, create vector embeddings, and load the vector embeddings into HeatWave:
 
     ```bash
-    <copy>call sys.VECTOR_STORE_LOAD('<PAR-URL>', '{"table_name": "VectorStoreTableName"}');</copy>
+    <copy>call sys.VECTOR_STORE_LOAD('<PAR-URL>', '{"table_name": "livelab_embedding "}');</copy>
     ```
     Replace the following:
 
     - **PAR-URL**: The complete Pre-Authenticated Request URL that you copied in Task 4, Step 3. Make sure to include the full URL.
-    - **VectorStoreTableName**: The name you want for the vector store table.
+    - **livelab_embedding**: The name you want for the vector store table.
    
     **Important**: If your files are in a folder within the bucket, you may need to append the folder path to the PAR URL:
     ```
@@ -229,14 +229,20 @@ Pre-authenticated requests provide a way to let HeatWave access your bucket or o
     
     Wait until the status shows `"status": "COMPLETED"` and `"progress": 100` before proceeding.
     
-    **Note**: Vector embedding generation takes approximately 3-7 minutes depending on file size and HeatWave cluster configuration.
+    **Note**: Vector embedding generation takes approximately 20-25 minutes depending on file size and HeatWave cluster configuration.
 
 6. Once the task shows COMPLETED status, verify that embeddings are loaded in the vector embeddings table.
+    
 
     ```bash
     <copy>select count(*) from <EmbeddingsTableName>;</copy>
     ```
-    For example:
+    For example:  
+    - Get a list of tables:
+    ```bash
+    <copy>SHOW TABLES; </copy>
+    ```
+    - Get a count of the table ending in "pdf".:
     ```bash
     <copy>select count(*) from livelab_embedding_pdf; </copy>
     ```
