@@ -412,7 +412,6 @@ Contact perside.foster@oracle.com for more details
 5. To clear the chat history, click **Clear Chat History**.
 
 
-## Task 6: Quick Quiz
 
 ```quiz
 Q: 1. What is the maximum image width allowed in LiveLabs workshops?
