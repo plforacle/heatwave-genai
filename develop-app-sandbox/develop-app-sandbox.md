@@ -381,70 +381,7 @@ Contact perside.foster@oracle.com for more details
 
     ![Updated chat interace](./images/updated-chat-interface.png "Updated chat interface")
 
-## Task 6: Test HeatWave RAG Chat Application
 
-1. From your web browser, access the chat_interface.php. 
-
-    ```bash
-    <copy>http://<ComputePublicIPAddress>/app/chat_interface.php)</copy>
-    ```
-
-    For example:
-    
-    http://129.153.218.143/app/chat_interface.php
-
-2. You'll see a chat interface with a text input field.
-
-    ![Input field](./images/input-field.png "Input field")
-
-3. Type your question into the input field and click **Send** or **Enter**. 
-
-    For example:
-
-    - What is HeatWave AutoML?
-    - What is MySQL?
-    - Is HeatWave available on AWS?
-
-    The application will send your query to the HeatWave RAG system and display the response along with any relevant citations. Your chat history will be maintained across page reloads using PHP sessions.
-
-    ![Enter your questions](./images/queries.png "Enter your questions")
-
-5. To clear the chat history, click **Clear Chat History**.
-
-
-## Task 6: Quick Quiz 123456
-
-```quiz
-Q: 1. What is the maximum image width allowed in LiveLabs workshops?
-* 1280 pixels
-- 1920 pixels
-- 800 pixels
-- 2560 pixels
-> Images must not exceed 1,280 px in width or height to ensure proper display across all devices.</copy>
-```
-
-```quiz
-Q: 2. Which of the following are valid Oracle Cloud Infrastructure (OCI) compute shapes? (Select all that apply)
-* VM.Standard.E4.Flex
-* BM.Standard3.64
-- VM.SuperFast.999
-* VM.Standard.A1.Flex
-- EC2.Large
-> OCI offers VM (Virtual Machine) and BM (Bare Metal) shapes. The E4, Standard3, and A1 series are all valid OCI shapes.
-```
-
-```quiz
-Q: 3. What does OCI stand for?
-* Oracle Cloud Infrastructure
-- Oracle Computer Interface
-- Online Cloud Integration
-
-Q: 4. Which service provides object storage in OCI?
-- Block Volume
-* Object Storage
-- File Storage
-> Object Storage is ideal for unstructured data like images, videos, and backups.
-```
 You may now **proceed to the next lab**.
 
 ## Learn More
