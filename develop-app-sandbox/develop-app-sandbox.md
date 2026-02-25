@@ -434,15 +434,15 @@ Q: 2. Which of the following are valid Oracle Cloud Infrastructure (OCI) compute
 ```
 
 ```quiz
-Q: What does OCI stand for?
+Q: 3. What does OCI stand for?
 * Oracle Cloud Infrastructure
 - Oracle Computer Interface
 - Online Cloud Integration
 
-Q: Which service provides object storage in OCI?
-Block Volume
+Q: 4. Which service provides object storage in OCI?
+- Block Volume
 * Object Storage
-File Storage
+- File Storage
 > Object Storage is ideal for unstructured data like images, videos, and backups.
 ```
 You may now **proceed to the next lab**.
