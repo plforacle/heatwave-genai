@@ -415,7 +415,7 @@ Contact perside.foster@oracle.com for more details
 ## Task 6: Quick Quiz
 
 ```quiz
-Q: What is the maximum image width allowed in LiveLabs workshops?
+Q: 1. What is the maximum image width allowed in LiveLabs workshops?
 * 1280 pixels
 - 1920 pixels
 - 800 pixels
@@ -423,6 +423,28 @@ Q: What is the maximum image width allowed in LiveLabs workshops?
 > Images must not exceed 1,280 px in width or height to ensure proper display across all devices.</copy>
 ```
 
+```quiz
+Q: 2. Which of the following are valid Oracle Cloud Infrastructure (OCI) compute shapes? (Select all that apply)
+* VM.Standard.E4.Flex
+* BM.Standard3.64
+- VM.SuperFast.999
+* VM.Standard.A1.Flex
+- EC2.Large
+> OCI offers VM (Virtual Machine) and BM (Bare Metal) shapes. The E4, Standard3, and A1 series are all valid OCI shapes.
+```
+
+```quiz
+Q: What does OCI stand for?
+* Oracle Cloud Infrastructure
+- Oracle Computer Interface
+- Online Cloud Integration
+
+Q: Which service provides object storage in OCI?
+Block Volume
+* Object Storage
+File Storage
+> Object Storage is ideal for unstructured data like images, videos, and backups.
+```
 You may now **proceed to the next lab**.
 
 ## Learn More
