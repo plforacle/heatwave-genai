@@ -414,14 +414,14 @@ Contact perside.foster@oracle.com for more details
 
 ## Task 6: Quick Quiz
 
-    ```bash
-<copy>Q: What is the maximum image width allowed in LiveLabs workshops?
+```quiz
+Q: What is the maximum image width allowed in LiveLabs workshops?
 * 1280 pixels
 - 1920 pixels
 - 800 pixels
 - 2560 pixels
 > Images must not exceed 1,280 px in width or height to ensure proper display across all devices.</copy>
-    ```
+```
 
 You may now **proceed to the next lab**.
 
